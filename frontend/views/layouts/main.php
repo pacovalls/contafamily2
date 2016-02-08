@@ -28,7 +28,7 @@ AppAsset::register ( $this );
     <?php
 				NavBar::begin ( [
 						// 'brandLabel' => 'My Company',
-						'brandLabel' => 'Contafamily_Pruebas',
+						'brandLabel' => 'Contafamily',
 						'brandUrl' => Yii::$app->homeUrl,
 						'options' => [ 
 								'class' => 'navbar-inverse navbar-fixed-top' 
@@ -68,6 +68,7 @@ AppAsset::register ( $this );
 							] 
 					];
 				} else {
+					$menuitems [] = ['label' => 'Perfil', 'url' => ['/perfil/view']];
 					$menuItems [] = [ 
 							'label' => 'Salir (' . Yii::$app->user->identity->username . ')',
 							'url' => [ 
