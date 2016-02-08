@@ -35,8 +35,8 @@ class PasswordResetRequestForm extends Model {
 						'exist',
 						'targetClass' => '\common\models\User',
 						'filter' => [ 
-							/*	'estado_id' => User::ESTADO_ACTIVO --sustituimos por linea siguiente */
-								'estado_id' => ValorHelpers::getEstadoId('Activo')
+								'estado_id' => User::ESTADO_ACTIVO --sustituimos por linea siguiente 
+							/*	'estado_id' => ValorHelpers::getEstadoId('Activo')*/
 						],
 						'message' => 'There is no user with such email.' 
 				] 

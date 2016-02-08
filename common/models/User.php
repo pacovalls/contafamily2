@@ -34,11 +34,11 @@ use common\models\ValorHelpers;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    /** Anulamos la constante 
-    * const ESTADO_ACTIVO = 1;
-	*/
-	/* LA sustituimos por */
-	'estado_id' => ValorHelpers::getEstadoId('Activo')
+    /* Anulamos la constante 	*/
+     const ESTADO_ACTIVO = 2;
+
+	/* LA sustituimos por 
+	'estado_id' => ValorHelpers::getEstadoId('Activo')*/
 	
     public static function tableName()
     {
@@ -68,6 +68,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+        /*	 'estado_id' => ValorHelpers::getEstadoId('Activo'),*/
             ['estado_id', 'default', 'value' => self::ESTADO_ACTIVO],
             [['estado_id'],'in', 'range'=>array_keys($this->getEstadoLista())],
 
