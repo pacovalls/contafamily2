@@ -4,6 +4,7 @@ namespace frontend\models;
 
 use common\models\User;
 use yii\base\Model;
+use common\models\ValorHelpers;
 
 /**
  * Password reset request form
@@ -34,7 +35,8 @@ class PasswordResetRequestForm extends Model {
 						'exist',
 						'targetClass' => '\common\models\User',
 						'filter' => [ 
-								'status' => User::STATUS_ACTIVE 
+							/*	'estado_id' => User::ESTADO_ACTIVO --sustituimos por linea siguiente */
+								'estado_id' => ValorHelpers::getEstadoId('Activo')
 						],
 						'message' => 'There is no user with such email.' 
 				] 
@@ -49,7 +51,8 @@ class PasswordResetRequestForm extends Model {
 	public function sendEmail() {
 		/* @var $user User */
 		$user = User::findOne ( [ 
-				'status' => User::STATUS_ACTIVE,
+			/*	'estado_id' => User::STATUS_ACTIVE, -- sustituido por linea siguiente */
+				'estado_id' => ValorHelpers::getEstadoId('Activo')
 				'email' => $this->email 
 		] );
 		

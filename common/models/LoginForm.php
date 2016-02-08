@@ -4,6 +4,8 @@ namespace common\models;
 
 use Yii;
 use yii\base\Model;
+use yii\web\NotFoundHttpException;
+use yii\models\PermisosHelpers;
 
 /**
  * Login form
@@ -70,7 +72,20 @@ class LoginForm extends Model {
 			return false;
 		}
 	}
+	/**
+	 * Logs in a user using the provided username and password.
+	 *
+	 * @return boolean whether the user is logged in successfully
+	 */
 	
+	public function loginAdmin()
+	{
+		if (($this->validate()) && PermisosHelpers::requerirMinimoRol('Admin', $this->getUser()->id)) {
+			return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
+		} else {
+			throw new NotFoundHttpException('No Pasarás.');
+		}
+	}
 	/**
 	 * Finds user by [[username]]
 	 *

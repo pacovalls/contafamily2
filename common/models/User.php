@@ -14,6 +14,8 @@ use frontend\models\Perfil;
 use backend\models\Rol;
 use backend\models\Estado;
 use backend\models\TipoUsuario;
+use common\models\ValorHelpers;
+
 /**
  * User model
  *
@@ -32,8 +34,12 @@ use backend\models\TipoUsuario;
  */
 class User extends ActiveRecord implements IdentityInterface
 {
-    const ESTADO_ACTIVO = 1;
-
+    /** Anulamos la constante 
+    * const ESTADO_ACTIVO = 1;
+	*/
+	/* LA sustituimos por */
+	'estado_id' => ValorHelpers::getEstadoId('Activo')
+	
     public static function tableName()
     {
         return 'user';

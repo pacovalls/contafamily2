@@ -16,7 +16,8 @@ $this->params ['breadcrumbs'] [] = $this->title;
 
 	<div class="row">
 		<div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+				***  Modificado el orignal de  form-sigup a signup-form **** 
+            <?php $form = ActiveForm::begin(['id' => 'signup-form']); ?>
 
                 <?= $form->field($model, 'username')?>
 
